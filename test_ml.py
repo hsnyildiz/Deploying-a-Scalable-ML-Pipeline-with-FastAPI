@@ -1,28 +1,14 @@
-import pytest
-# TODO: add necessary import
+def test_data_loading():
+    from data import load_data
 
-# TODO: implement the first test. Change the function name and input as needed
-def test_one():
-    """
-    # add description for the first test
-    """
-    # Your code here
-    pass
+    data = load_data("data/census.csv")
+    assert data is not None
 
 
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
-    """
-    # add description for the second test
-    """
-    # Your code here
-    pass
+def test_model_training():
+    from model import train_model
+    from data import load_data
 
-
-# TODO: implement the third test. Change the function name and input as needed
-def test_three():
-    """
-    # add description for the third test
-    """
-    # Your code here
-    pass
+    data = load_data("data/census.csv")
+    model = train_model(data)
+    assert model is not None
