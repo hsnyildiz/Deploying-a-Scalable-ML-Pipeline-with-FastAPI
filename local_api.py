@@ -1,5 +1,12 @@
 import requests
 
+g = requests.get(
+    "http://127.0.0.1:8000"
+)
+print(f"Status Code: {g.status_code}")
+print(f"Result: {g.json().get('message')}")
+print("\n")
+
 data = {
     "age": 37,
     "workclass": "Private",
@@ -22,12 +29,13 @@ r = requests.post(
     json=data,
 )
 
-# Print the status code
-print(r.status_code)
+# Print the status code with format
+print(f"Status code: {r.status_code}")
 
 # Print the result
 try:
-    print(r.json())
+    print(f"Result: {r.json().get('result')}")
+
 except requests.exceptions.JSONDecodeError:
     print("Error decoding JSON response")
     print(r.text)

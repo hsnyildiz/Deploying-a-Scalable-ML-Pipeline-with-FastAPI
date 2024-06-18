@@ -40,7 +40,7 @@ app = FastAPI()
 @app.get("/")
 async def get_root():
     """Say hello!"""
-    return {"message": "Welcome to the census model API"}
+    return {"message": "Hello from the API!"}
 
 
 @app.post("/inference")
