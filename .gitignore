@@ -71,7 +71,6 @@ fastapi/
 # Other
 *.log
 *.sqlite3
-*.png
 *.pdf
 *.DS_Store
 .idea/
