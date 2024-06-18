@@ -1,5 +1,3 @@
-import os
-
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
@@ -25,12 +23,13 @@ class Data(BaseModel):
     capital_gain: int = Field(..., example=0, alias="capital-gain")
     capital_loss: int = Field(..., example=0, alias="capital-loss")
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
-    native_country: str = Field(..., example="United-States", alias="native-country")
+    native_country: str = Field(
+        ..., example="United-States", alias="native-country"
+    )
 
 
 encoder_path = "model/encoder.pkl"
 encoder = load_model(encoder_path)
-
 
 model_path = "model/model.pkl"
 model = load_model(model_path)
@@ -67,7 +66,10 @@ async def post_inference(data: Data):
         "native-country",
     ]
     data_processed, _, _, _ = process_data(
-        X=data, categorical_features=cat_features, encoder=encoder, training=False
+        X=data,
+        categorical_features=cat_features,
+        encoder=encoder,
+        training=False,
     )
 
     _inference = inference(model, data_processed)
